@@ -116,6 +116,7 @@ const main = async (argumentos: string[], accion: string) => {
       console.log(typeof (añoaActualizar))
       const generoaActualizar = argumentos[7]
       console.log(argumentos)
+
       if (!idaActualizar || !tituloaActualizar || !autoraActualizar || isNaN(añoaActualizar) || !generoaActualizar) {
         console.log("Debes ingresar todos los parámetros requeridos y el año debe ser un número válido");
         break;

@@ -32,3 +32,22 @@ const BookSchema = new Schema<IBook>({
 
 const Book = mongoose.model<IBook>("Book", BookSchema)
 
+const main = async (argumentos: string[], accion: string, books: any[]) => {
+  await connectDb(URI_DB)
+
+  switch (accion) {
+    case "info":
+      console.log("---------- Comandos validos ----------")
+      console.table(commands)
+      break;
+    case "lista":
+      const dbbooks = await Book.find({}, {})
+      console.log(dbbooks)
+  }
+
+
+}
+
+
+
+export { main }

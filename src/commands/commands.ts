@@ -1,4 +1,5 @@
 const commands = [
+
   { comando: "listarLibros", descripcion: "Muestra la lista de todos los libros", parametros: "" },
   { comando: "agregarLibro", descripcion: "Agrega un nuevo libro a la colección", parametros: ["titulo", "autor", "anio", "genero"] },
   { comando: "buscarLibro", descripcion: "Busca un libro mediante un argumento proporcionado", parametros: ["titulo"] },

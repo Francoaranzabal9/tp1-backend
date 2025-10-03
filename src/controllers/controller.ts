@@ -15,6 +15,7 @@ const connectDb = async (URI: string) => {
 }
 
 interface IBook {
+  id: string;
   titulo: string;
   autor: string;
   anio: number;
@@ -23,6 +24,7 @@ interface IBook {
 }
 
 const BookSchema = new Schema<IBook>({
+  id: { type: String, required: true, unique: true },
   titulo: { type: String, required: true },
   autor: { type: String, required: true },
   anio: { type: Number, required: true },
@@ -34,6 +36,7 @@ const Book = mongoose.model<IBook>("Book", BookSchema)
 
 const main = async (argumentos: string[], accion: string, books: any[]) => {
   await connectDb(URI_DB)
+  const id = argumentos[3]
   const titulo = argumentos[3]
   const autor = argumentos[4]
   const anio = argumentos[5]
@@ -77,6 +80,7 @@ const main = async (argumentos: string[], accion: string, books: any[]) => {
         break
       }
       const nuevoLibro = new Book({
+        id: crypto.randomUUID(),
         titulo: titulo.toLowerCase(),
         autor: autor.toLowerCase(),
         anio,
@@ -88,6 +92,21 @@ const main = async (argumentos: string[], accion: string, books: any[]) => {
 
       break;
     case "borrarLibro":
+      if (!id) {
+        console.log("debes ingresar el UUID del libro")
+        break
+      }
+
+      const libroABorrar = await Book.findOneAndDelete({ id })
+
+      if (!libroABorrar) {
+        console.log("El libro que deseas borrar no existe")
+        break
+      } else {
+        console.log("El libro ha sido borrado con exito")
+      }
+      console.log(libroABorrar)
+
       break;
     case "actualizarLibro":
       break;

@@ -1,6 +1,8 @@
 # tp1-backend
 
-Este proyecto es una API y CLI para la gestión de una colección de libros usando Node.js, TypeScript y MongoDB. Permite listar, agregar, buscar, borrar y actualizar libros desde la terminal.
+CRUD en MongoDB con TypeScript
+Este proyecto implementa un CRUD (Create, Read, Update, Delete) sobre una colección de libros en MongoDB, utilizando TypeScript y Mongoose, sin necesidad de crear una API.
+El objetivo es practicar la definición de esquemas en Mongoose, la manipulación de documentos en MongoDB y el uso de async/await para operaciones asíncronas.
 
 ## Requisitos
 
@@ -75,15 +77,7 @@ Puedes agregar estos libros usando el comando `agregarLibro`:
 | Don Quijote           | Miguel de Cervantes         | 1605 | Clásico     |
 | La sombra del viento  | Carlos Ruiz Zafón           | 2001 | Misterio    |
 
-Ejemplo de comandos para agregarlos:
 
-```
-npm run dev agregarLibro "Cien años de soledad" "Gabriel García Márquez" 1967 "Novela"
-npm run dev agregarLibro "El Principito" "Antoine de Saint-Exupéry" 1943 "Ficción"
-npm run dev agregarLibro "Rayuela" "Julio Cortázar" 1963 "Novela"
-npm run dev agregarLibro "Don Quijote" "Miguel de Cervantes" 1605 "Clásico"
-npm run dev agregarLibro "La sombra del viento" "Carlos Ruiz Zafón" 2001 "Misterio"
-```
 
 
 ## Notas

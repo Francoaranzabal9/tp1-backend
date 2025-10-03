@@ -1,8 +1,7 @@
-import { readDb } from "./db/conection"
+
 import { main } from "./controllers/controller"
 
 const argumentos = process.argv
 const accion = argumentos[2]
-const books = readDb()
 
-main(argumentos, accion, books)
+main(argumentos, accion)

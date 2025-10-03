@@ -34,7 +34,10 @@ const Book = mongoose.model<IBook>("Book", BookSchema)
 
 const main = async (argumentos: string[], accion: string, books: any[]) => {
   await connectDb(URI_DB)
-
+  const titulo = argumentos[3]
+  const autor = argumentos[4]
+  const anio = argumentos[5]
+  const genero = argumentos[6]
   switch (accion) {
     case "info":
       console.log("---------- Comandos validos ----------")
@@ -43,6 +46,53 @@ const main = async (argumentos: string[], accion: string, books: any[]) => {
     case "lista":
       const dbbooks = await Book.find({}, {})
       console.log(dbbooks)
+      break;
+    case "buscarLibro":
+      if (!argumentos[3]) {
+        console.log("Debes ingresar el titulo del libro que deseas buscar")
+        break
+      }
+      const libroEncontrado = await Book.findOne({
+        titulo: new RegExp(`${argumentos[3]}`, "i")
+      })
+
+      if (!libroEncontrado) {
+        console.log("El libro que estas buscando no existe")
+        break
+      } else {
+        console.log(libroEncontrado)
+      }
+      break;
+    case "agregarLibro":
+
+      if (!titulo || !autor || !anio || !genero) {
+        console.log("Debes ingresar todos los parametros requeridos")
+        break
+      }
+
+      const existe = await Book.findOne({ titulo })
+
+      if (existe) {
+        console.log("El libro ya existe en la base de datos")
+        break
+      }
+      const nuevoLibro = new Book({
+        titulo: titulo.toLowerCase(),
+        autor: autor.toLowerCase(),
+        anio,
+        genero: genero.toLowerCase()
+      })
+
+      await nuevoLibro.save()
+      console.log(nuevoLibro, "nuevo libro")
+
+      break;
+    case "borrarLibro":
+      break;
+    case "actualizarLibro":
+      break;
+    default:
+      break
   }
 
 

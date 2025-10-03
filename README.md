@@ -62,6 +62,30 @@ npm run dev <comando> [argumentos]
   npm run dev  actualizarLibro <id-del-libro> "Nuevo Título" "Nuevo Autor" 2020 "Nuevo Género"
   ```
 
+
+  ## Ejemplo de libros para probar
+
+Puedes agregar estos libros usando el comando `agregarLibro`:
+
+| titulo                | autor                       | año  | genero      |
+|-----------------------|-----------------------------|------|-------------|
+| Cien años de soledad  | Gabriel García Márquez      | 1967 | Novela      |
+| El Principito         | Antoine de Saint-Exupéry    | 1943 | Ficción     |
+| Rayuela               | Julio Cortázar              | 1963 | Novela      |
+| Don Quijote           | Miguel de Cervantes         | 1605 | Clásico     |
+| La sombra del viento  | Carlos Ruiz Zafón           | 2001 | Misterio    |
+
+Ejemplo de comandos para agregarlos:
+
+```
+npm run dev agregarLibro "Cien años de soledad" "Gabriel García Márquez" 1967 "Novela"
+npm run dev agregarLibro "El Principito" "Antoine de Saint-Exupéry" 1943 "Ficción"
+npm run dev agregarLibro "Rayuela" "Julio Cortázar" 1963 "Novela"
+npm run dev agregarLibro "Don Quijote" "Miguel de Cervantes" 1605 "Clásico"
+npm run dev agregarLibro "La sombra del viento" "Carlos Ruiz Zafón" 2001 "Misterio"
+```
+
+
 ## Notas
 
 - El campo `id` es generado automáticamente al agregar un libro.
